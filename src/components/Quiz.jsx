@@ -1,4 +1,5 @@
 import React from "react";
+import Questions from "./Questions";
 
 const Quiz = () => {
   function onNext() {
@@ -10,6 +11,8 @@ const Quiz = () => {
   return (
     <div className="container">
       <h1 className="title">Quiz App</h1>
+
+      <Questions />
 
       <div>
         <button className="prev" onClick={onPrev}>
