@@ -7,13 +7,14 @@ const Quiz = () => {
   const state = useSelector((state) => state);
 
   useEffect(() => {
-    console.log(state);
+    // console.log(state);
   }, []);
+
   function onNext() {
-    console.log("next");
+    // console.log("next");
   }
   function onPrev() {
-    console.log("prev");
+    // console.log("prev");
   }
   return (
     <div className="container">
