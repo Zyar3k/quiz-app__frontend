@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import data from "../database/data";
 
+import { useFetchQuestions } from "../hooks/FetchQuestions";
+
 const Questions = () => {
   const [checked, setChecked] = useState(undefined);
-
+  const [{ isLoading, apiData, serverError }] = useFetchQuestions();
   function onSelect() {
     console.log("radio btn change");
   }
@@ -13,6 +15,9 @@ const Questions = () => {
   useEffect(() => {
     console.log(data);
     console.log(question);
+    console.log(isLoading);
+    console.log(apiData);
+    console.log(serverError);
   }, []);
 
   return (
