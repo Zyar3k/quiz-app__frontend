@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
@@ -17,13 +16,6 @@ const Result = () => {
     questions: { queue, answers },
     result: { result, userId },
   } = useSelector((state) => state);
-
-  useEffect(() => {
-    // console.log(result);
-    // console.log(attempts);
-    // console.log(earnPoints);
-    console.log(flag);
-  });
 
   const totalPoints = queue.length * 10;
   const attempts = attempts_Number(result);

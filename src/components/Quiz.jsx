@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Navigate } from "react-router-dom";
 
@@ -8,15 +8,9 @@ import { PushAnswer } from "../hooks/setResult";
 
 const Quiz = () => {
   const [check, setCheck] = useState(undefined);
-  const state = useSelector((state) => state);
   const result = useSelector((state) => state.result.result);
   const { trace, queue } = useSelector((state) => state.questions);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    // console.log("state", state);
-    console.log(result);
-  });
 
   function onNext() {
     if (trace < queue.length) {
@@ -34,7 +28,6 @@ const Quiz = () => {
   }
 
   function onChecked(check) {
-    // console.log(check);
     setCheck(check);
   }
 
