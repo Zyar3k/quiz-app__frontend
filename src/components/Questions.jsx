@@ -8,7 +8,7 @@ const Questions = ({ onChecked }) => {
   const [checked, setChecked] = useState(undefined);
   const dispatch = useDispatch();
   const [{ isLoading, apiData, serverError }] = useFetchQuestions();
-
+  useSelector((state) => console.log(state));
   const { trace } = useSelector((state) => state.questions);
   const questions = useSelector(
     (state) => state.questions.queue[state.questions.trace]

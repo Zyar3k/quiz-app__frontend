@@ -1,6 +1,11 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import {
+  attempts_Number,
+  earnPoints_Number,
+  flagResult,
+} from "../helper/helper";
 import { resetAllAction } from "../redux/question_reducer";
 import { resetResultAction } from "../redux/result_reducer";
 
@@ -8,6 +13,23 @@ import ResultTable from "./ResultTable";
 
 const Result = () => {
   const dispatch = useDispatch();
+  const {
+    questions: { queue, answers },
+    result: { result, userId },
+  } = useSelector((state) => state);
+
+  useEffect(() => {
+    // console.log(result);
+    // console.log(attempts);
+    // console.log(earnPoints);
+    console.log(flag);
+  });
+
+  const totalPoints = queue.length * 10;
+  const attempts = attempts_Number(result);
+  const earnPoints = earnPoints_Number(result, answers, 10);
+  const flag = flagResult(totalPoints, earnPoints);
+
   function onRestart() {
     dispatch(resetAllAction());
     dispatch(resetResultAction());
@@ -23,23 +45,23 @@ const Result = () => {
         </div>
         <div>
           <span>Total Quiz Points :</span>
-          <span>88</span>
+          <span>{totalPoints || 0}</span>
         </div>
         <div>
           <span>Total Questions :</span>
-          <span>8</span>
+          <span>{queue.length || 0}</span>
         </div>
         <div>
           <span>Total Attempts :</span>
-          <span>8</span>
+          <span>{attempts || 0}</span>
         </div>
         <div>
           <span>Total earn points :</span>
-          <span>8</span>
+          <span>{earnPoints || 0}</span>
         </div>
         <div>
           <span>Quiz result</span>
-          <span>Passed</span>
+          <span>{flag ? "Passed" : "Failed"}</span>
         </div>
       </div>
 

@@ -14,7 +14,7 @@ const Quiz = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log("state", state);
+    // console.log("state", state);
     console.log(result);
   });
 
@@ -26,13 +26,15 @@ const Quiz = () => {
         dispatch(PushAnswer(check));
       }
     }
+
+    setCheck(undefined);
   }
   function onPrev() {
     if (trace > 0) dispatch(MovePrevQuestion());
   }
 
   function onChecked(check) {
-    console.log(check);
+    // console.log(check);
     setCheck(check);
   }
 
@@ -46,9 +48,14 @@ const Quiz = () => {
       <Questions onChecked={onChecked} />
 
       <div>
-        <button className="prev" onClick={onPrev}>
-          Prev
-        </button>
+        {trace > 0 ? (
+          <button className="prev" onClick={onPrev}>
+            Prev
+          </button>
+        ) : (
+          <div></div>
+        )}
+
         <button className="next" onClick={onNext}>
           Next
         </button>
