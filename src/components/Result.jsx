@@ -5,6 +5,7 @@ import {
   earnPoints_Number,
   flagResult,
 } from "../helper/helper";
+import { usePublishResult } from "../hooks/setResult";
 import { resetAllAction } from "../redux/question_reducer";
 import { resetResultAction } from "../redux/result_reducer";
 
@@ -22,6 +23,14 @@ const Result = () => {
   const earnPoints = earnPoints_Number(result, answers, 10);
   const flag = flagResult(totalPoints, earnPoints);
 
+  usePublishResult({
+    result,
+    username: userId,
+    attempts,
+    points: earnPoints,
+    achieved: flag ? "Passed" : "Failed",
+  });
+
   function onRestart() {
     dispatch(resetAllAction());
     dispatch(resetResultAction());
@@ -33,7 +42,7 @@ const Result = () => {
       <div className="result">
         <div>
           <span>username</span>
-          <span>Alice</span>
+          <span>{userId || ""}</span>
         </div>
         <div>
           <span>Total Quiz Points :</span>
