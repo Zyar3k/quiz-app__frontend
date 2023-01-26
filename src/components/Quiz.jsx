@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Navigate } from "react-router-dom";
+
 import Questions from "./Questions";
 import { MoveNextQuestion, MovePrevQuestion } from "../hooks/FetchQuestions";
 import { PushAnswer } from "../hooks/setResult";
@@ -7,6 +9,7 @@ import { PushAnswer } from "../hooks/setResult";
 const Quiz = () => {
   const [checked, setChecked] = useState(undefined);
   const state = useSelector((state) => state);
+  const result = useSelector((state) => state.result.result);
   const { trace, queue } = useSelector((state) => state.questions);
   const dispatch = useDispatch();
 
@@ -27,6 +30,10 @@ const Quiz = () => {
   function onChecked(check) {
     console.log(check);
     setChecked(check);
+  }
+
+  if (result.length && result.length >= queue.length) {
+    return <Navigate to={"/result"} replace="true"></Navigate>;
   }
   return (
     <div className="container">

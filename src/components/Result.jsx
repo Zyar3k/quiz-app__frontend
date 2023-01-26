@@ -1,10 +1,16 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { resetAllAction } from "../redux/question_reducer";
+import { resetResultAction } from "../redux/result_reducer";
+
 import ResultTable from "./ResultTable";
 
 const Result = () => {
+  const dispatch = useDispatch();
   function onRestart() {
-    console.log("restart");
+    dispatch(resetAllAction());
+    dispatch(resetResultAction());
   }
   return (
     <div className="container">
