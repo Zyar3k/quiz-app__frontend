@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 import { useFetchQuestions } from "../hooks/FetchQuestions";
 
-const Questions = () => {
+const Questions = ({ onChecked }) => {
   const [checked, setChecked] = useState(undefined);
   const [{ isLoading, apiData, serverError }] = useFetchQuestions();
 
@@ -15,8 +15,9 @@ const Questions = () => {
     console.log(questions);
   });
 
-  function onSelect() {
-    // console.log("radio btn change");
+  function onSelect(e) {
+    console.log(e);
+    onChecked(e);
   }
 
   if (isLoading) return <h3>Loading...</h3>;
@@ -33,7 +34,7 @@ const Questions = () => {
               value={checked}
               name="options"
               id={`q${i}-option`}
-              onChange={onSelect}
+              onChange={() => onSelect(i)}
             />
             <label htmlFor={`q${i}-option`}>{q}</label>
           </li>
