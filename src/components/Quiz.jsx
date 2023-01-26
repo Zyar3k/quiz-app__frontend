@@ -7,7 +7,7 @@ import { MoveNextQuestion, MovePrevQuestion } from "../hooks/FetchQuestions";
 import { PushAnswer } from "../hooks/setResult";
 
 const Quiz = () => {
-  const [checked, setChecked] = useState(undefined);
+  const [check, setCheck] = useState(undefined);
   const state = useSelector((state) => state);
   const result = useSelector((state) => state.result.result);
   const { trace, queue } = useSelector((state) => state.questions);
@@ -15,12 +15,16 @@ const Quiz = () => {
 
   useEffect(() => {
     console.log("state", state);
+    console.log(result);
   });
 
   function onNext() {
     if (trace < queue.length) {
       dispatch(MoveNextQuestion());
-      dispatch(PushAnswer(checked));
+
+      if (result.length <= trace) {
+        dispatch(PushAnswer(check));
+      }
     }
   }
   function onPrev() {
@@ -29,7 +33,7 @@ const Quiz = () => {
 
   function onChecked(check) {
     console.log(check);
-    setChecked(check);
+    setCheck(check);
   }
 
   if (result.length && result.length >= queue.length) {
