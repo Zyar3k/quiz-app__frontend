@@ -35,3 +35,18 @@ export const useFetchQuestions = () => {
 
   return [getData, setGetData];
 };
+
+export const MoveNextQuestion = () => async (dispatch) => {
+  try {
+    dispatch(Action.moveNextAction());
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const MovePrevQuestion = () => async (dispatch) => {
+  try {
+    dispatch(Action.movePrevAction());
+  } catch (error) {
+    console.log(error);
+  }
+};
