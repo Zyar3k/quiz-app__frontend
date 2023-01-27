@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { setUserId } from "../redux/result_reducer";
 
+import "../styles/main.css";
+
 const Main = () => {
   const inputRef = useRef(null);
   const dispatch = useDispatch();

@@ -9,11 +9,14 @@ const ResultTable = () => {
       setData(res);
     });
   });
+  useEffect(() => {
+    console.log(data);
+  }, []);
   return (
     <div>
       <table>
-        <thead>
-          <tr>
+        <thead className="table-header">
+          <tr className="table-row">
             <td>Name</td>
             <td>Attempts</td>
             <td>Earn Points</td>
@@ -23,7 +26,7 @@ const ResultTable = () => {
         <tbody>
           {!data ?? <div>No Data Found </div>}
           {data.map((val, i) => (
-            <tr key={i}>
+            <tr className="table-body" key={i}>
               <td>{val?.username || ""}</td>
               <td>{val?.attempts || 0}</td>
               <td>{val?.points || 0}</td>

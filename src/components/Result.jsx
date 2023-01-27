@@ -8,8 +8,9 @@ import {
 import { usePublishResult } from "../hooks/setResult";
 import { resetAllAction } from "../redux/question_reducer";
 import { resetResultAction } from "../redux/result_reducer";
-
 import ResultTable from "./ResultTable";
+
+import "../styles/result.css";
 
 const Result = () => {
   const dispatch = useDispatch();
@@ -37,37 +38,42 @@ const Result = () => {
   }
   return (
     <div className="container">
-      <h1 className="title">Quiz App</h1>
+      <h1 className="title text-light">Quiz App</h1>
 
-      <div className="result">
-        <div>
+      <div className="result flex-center">
+        <div className="flex">
           <span>username</span>
-          <span>{userId || ""}</span>
+          <span className="bold">{userId || ""}</span>
         </div>
-        <div>
+        <div className="flex">
           <span>Total Quiz Points :</span>
-          <span>{totalPoints || 0}</span>
+          <span className="bold">{totalPoints || 0}</span>
         </div>
-        <div>
+        <div className="flex">
           <span>Total Questions :</span>
-          <span>{queue.length || 0}</span>
+          <span className="bold">{queue.length || 0}</span>
         </div>
-        <div>
+        <div className="flex">
           <span>Total Attempts :</span>
-          <span>{attempts || 0}</span>
+          <span className="bold">{attempts || 0}</span>
         </div>
-        <div>
+        <div className="flex">
           <span>Total earn points :</span>
-          <span>{earnPoints || 0}</span>
+          <span className="bold">{earnPoints || 0}</span>
         </div>
-        <div>
+        <div className="flex">
           <span>Quiz result</span>
-          <span>{flag ? "Passed" : "Failed"}</span>
+          <span
+            style={{ color: `${flag ? "#2aff95" : "#ff2a66"}` }}
+            className="bold"
+          >
+            {flag ? "Passed" : "Failed"}
+          </span>
         </div>
       </div>
 
       <div className="start">
-        <Link to={"/"} onClick={onRestart}>
+        <Link to={"/"} className="btn" onClick={onRestart}>
           Restart
         </Link>
       </div>

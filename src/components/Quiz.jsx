@@ -36,20 +36,20 @@ const Quiz = () => {
   }
   return (
     <div className="container">
-      <h1 className="title">Quiz App</h1>
+      <h1 className="title text-light">Quiz App</h1>
 
       <Questions onChecked={onChecked} />
 
-      <div>
+      <div className="grid">
         {trace > 0 ? (
-          <button className="prev" onClick={onPrev}>
+          <button className="btn prev" onClick={onPrev}>
             Prev
           </button>
         ) : (
           <div></div>
         )}
 
-        <button className="next" onClick={onNext}>
+        <button className="btn next" onClick={onNext}>
           Next
         </button>
       </div>
