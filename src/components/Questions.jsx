@@ -7,8 +7,8 @@ import { updateResult } from "../hooks/setResult";
 const Questions = ({ onChecked }) => {
   const [checked, setChecked] = useState(undefined);
   const dispatch = useDispatch();
-  const [{ isLoading, apiData, serverError }] = useFetchQuestions();
-
+  const [{ isLoading, serverError }] = useFetchQuestions();
+  const result = useSelector((state) => state.result.result);
   const { trace } = useSelector((state) => state.questions);
   const questions = useSelector(
     (state) => state.questions.queue[state.questions.trace]
@@ -23,12 +23,13 @@ const Questions = ({ onChecked }) => {
     setChecked(e);
   }
 
-  if (isLoading) return <h3>Loading...</h3>;
-  if (serverError) return <h3>{serverError || "Unknown error"}</h3>;
+  if (isLoading) return <h3 className="text-light">Loading...</h3>;
+  if (serverError)
+    return <h3 className="text-light">{serverError || "Unknown error"}</h3>;
 
   return (
-    <div>
-      <h2>{questions?.question}</h2>
+    <div className="questions">
+      <h2 className="text-light">{questions?.question}</h2>
       <ul key={questions?.id}>
         {questions?.options.map((q, i) => (
           <li key={i}>
@@ -39,7 +40,12 @@ const Questions = ({ onChecked }) => {
               id={`q${i}-option`}
               onChange={() => onSelect(i)}
             />
-            <label htmlFor={`q${i}-option`}>{q}</label>
+            <label className="text-light" htmlFor={`q${i}-option`}>
+              {q}
+            </label>
+            <div
+              className={`check ${result[trace] == i ? "checked" : ""}`}
+            ></div>
           </li>
         ))}
       </ul>
