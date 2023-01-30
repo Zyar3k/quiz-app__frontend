@@ -9,9 +9,7 @@ const ResultTable = () => {
       setData(res);
     });
   });
-  useEffect(() => {
-    console.log(data);
-  }, []);
+
   return (
     <div>
       <table>

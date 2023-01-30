@@ -22,7 +22,6 @@ export const useFetchQuestions = () => {
           `${SERVER_NAME}/api/questions`,
           (data) => data
         );
-        
 
         if (questions.length > 0) {
           setGetData((prev) => ({ ...prev, isLoading: false }));

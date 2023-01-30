@@ -8,8 +8,10 @@ import { PushAnswer } from "../hooks/setResult";
 
 const Quiz = () => {
   const [check, setCheck] = useState(undefined);
+
   const result = useSelector((state) => state.result.result);
   const { trace, queue } = useSelector((state) => state.questions);
+
   const dispatch = useDispatch();
 
   function onNext() {
@@ -32,7 +34,7 @@ const Quiz = () => {
   }
 
   if (result.length && result.length >= queue.length) {
-    return <Navigate to={"/result"} replace="true"></Navigate>;
+    return <Navigate to={"/result"} replace={true}></Navigate>;
   }
   return (
     <div className="container">

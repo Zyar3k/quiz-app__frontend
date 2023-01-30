@@ -20,7 +20,7 @@ const Main = () => {
       <h1 className="title  text-light">Quiz App</h1>
 
       <ol>
-        <li>You will be asked 10 questions one after another.</li>
+        <li>You will be asked 16 questions one after another.</li>
         <li>10 points is awarded for the correct answer.</li>
         <li>
           Each question has three options. You can choose only one options.

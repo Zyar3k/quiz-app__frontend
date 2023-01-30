@@ -14,6 +14,7 @@ import "../styles/result.css";
 
 const Result = () => {
   const dispatch = useDispatch();
+
   const {
     questions: { queue, answers },
     result: { result, userId },
@@ -36,29 +37,30 @@ const Result = () => {
     dispatch(resetAllAction());
     dispatch(resetResultAction());
   }
+
   return (
     <div className="container">
       <h1 className="title text-light">Quiz App</h1>
 
       <div className="result flex-center">
         <div className="flex">
-          <span>username</span>
+          <span>Username</span>
           <span className="bold">{userId || ""}</span>
         </div>
         <div className="flex">
-          <span>Total Quiz Points :</span>
+          <span>Total Quiz Points:</span>
           <span className="bold">{totalPoints || 0}</span>
         </div>
         <div className="flex">
-          <span>Total Questions :</span>
+          <span>Total Questions:</span>
           <span className="bold">{queue.length || 0}</span>
         </div>
         <div className="flex">
-          <span>Total Attempts :</span>
+          <span>Total Attempts:</span>
           <span className="bold">{attempts || 0}</span>
         </div>
         <div className="flex">
-          <span>Total earn points :</span>
+          <span>Total earn points:</span>
           <span className="bold">{earnPoints || 0}</span>
         </div>
         <div className="flex">
